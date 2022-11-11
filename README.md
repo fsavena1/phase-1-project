@@ -15,3 +15,5 @@ forEach array iteration will be used to display recipes by keyword submission
 click and view individual recipes 
 
 favorite or like individual recipes 
+
+practice comment
