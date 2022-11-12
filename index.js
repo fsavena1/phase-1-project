@@ -6,8 +6,8 @@ const form = document.querySelector('#Recipe-search')
 
 form.addEventListener('submit' , (e) => {
     e.preventDefault()
-    console.log('Hello')
-
-    e.target
+    // console.log('Hello')
+     e.target['name'].value
+    console.log(e.target['name'].value)
 })
 
