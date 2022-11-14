@@ -1,0 +1,18 @@
+* {
+    margin: 10 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#recipe-results {
+    border: 2px solid red;
+    margin-top: 10px;
+    
+}
