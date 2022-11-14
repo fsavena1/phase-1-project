@@ -16,3 +16,12 @@ form {
     margin-top: 10px;
     
 }
+
+div {
+    text-align: center;
+    
+}
+img{
+    height: 500px;
+    width: 500px;
+}
