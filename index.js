@@ -5,6 +5,8 @@ const navBar = document.querySelector('#recipe-bar')
 const recipeName = document.createElement('h1')
 const newRecipe = document.createElement('div')
 const recipeImg = document.createElement('img')
+const recipeDes = document.createElement('p')
+const recipeLink = document.createElement('a')
 
 
 const api_ID = 'dd405108'
@@ -31,18 +33,29 @@ form.addEventListener('submit' , (e) => {
             const newSpan = document.createElement('span')
             const image = document.createElement('img')
             newSpan.className = 'span-tile'
+
             image.src = recipe.recipe.image
             image.className = 'bar-image'
+
             newSpan.append(image)
             navBar.append(newSpan)
+
             navBar.className = 'recipe-bar'
+
+
             newSpan.addEventListener('click', () => {
                 console.log('hello')
                 newRecipe.className = "card"
                 recipeName.textContent = recipe.recipe.label
                 recipeImg.classList.add('detail-image')
+                recipeDes.textContent = `${recipe.recipe.cuisineType} + ${recipe.recipe.mealType}`
                 recipeImg.src = recipe.recipe.image
-                newRecipe.append(recipeName,recipeImg)
+                recipeLink.textContent = `${recipe.recipe.label} Recipe`
+                recipeLink.href = recipe.recipe.url
+
+
+                newRecipe.append(recipeName,recipeDes,recipeImg)
+                newRecipe.append(recipeLink)
                 newSearch.append(newRecipe)
             })
         })        
