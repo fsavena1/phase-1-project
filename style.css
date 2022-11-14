@@ -1,5 +1,8 @@
-* {
+body {
     margin: 10 auto;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 51%, rgba(8,25,132,1) 100%);
+    
 }
 
 h1 {
@@ -12,16 +15,41 @@ form {
 }
 
 #recipe-results {
-    border: 2px solid red;
-    margin-top: 10px;
-    
+    margin-top: 30rem;
+    margin: 0 auto;
+    box-shadow: 20px 15px 6px darkblue;
+    width: 35rem;
+    border: 2px solid black;
+    border-radius: 15px
 }
 
 div {
     text-align: center;
-    
 }
+
 img{
-    height: 500px;
-    width: 500px;
+    height: 100px;
+    width: 100px;
 }
+
+.recipe-bar {
+    margin-bottom: 1rem;
+    margin-top: .8rem;
+}
+
+img {
+    overflow: hidden;
+    transition: transform 500ms ease;
+    border-radius: 12px;
+    padding: 0 .4rem;
+}
+
+img:hover {
+    transform:scale(1.2)
+}
+
+.detail-image {
+    height: 300px;
+    width: 300px;
+}
+
