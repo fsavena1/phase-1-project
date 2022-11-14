@@ -9,47 +9,49 @@ const baseUrl= `https://api.edamam.com/search?q=pizza&app_id=${api_ID}&app_key=$
 
 // form event listener 
 
-
 form.addEventListener('submit' , (e) => {
     e.preventDefault()
     // console.log('Hello')
      let formInput = e.target['name'].value
-    console.log(formInput)
+    // console.log(formInput)
 
     fetch(`https://api.edamam.com/search?q=${formInput}&app_id=${api_ID}&app_key=${api_Key}`)
     .then(res=>res.json())
-    .then(data=> console.log(data))
-
+    .then(recipes => {
+        recipes.hits.forEach((recipe) => {
+            console.log(recipe)
+            createRecipe(recipe)
+        })
+    })
 })
 
 // creating recipe elements 
 
 
-// function createRecipe(recipe) {
+function createRecipe(recipe) {
 
-//     const newRecipe = document.createElement('div')
-//     newRecipe.className = "card"
+    const newRecipe = document.createElement('div')
+    newRecipe.className = "card"
 
-//     const recipeName = document.createElement('h1')
-//     recipeName.textContent = 
+    const recipeName = document.createElement('h1')
+    recipeName.textContent = recipe.recipe.label
 
-//     const recipeImg = document.createElement('img')
-//     recipeImg.src = 
+    const recipeDes = document.createElement('p')
+    recipeDes.textContent = `${recipe.recipe.cuisineType} + ${recipe.recipe.mealType}`
 
-//     const recipeDes = document.createElement('p')
-//     recipeDes.textContent = 
-//     const r
+    const recipeImg = document.createElement('img')
+    recipeImg.src = recipe.recipe.image
 
-
-
-//     newRecipe.append(recipeName)
-//     newRecipe.append(recipeImg)
-//     newRecipe.append(recipeDes)
+    const recipeLink = document.createElement('p')
+    recipeLink.textContent = recipe.recipe.url
 
 
-//     newSearch.append(newRecipe)
+    newRecipe.append(recipeName)
+    newRecipe.append(recipeDes)
+    newRecipe.append(recipeImg)
+    newRecipe.append(recipeLink)
 
-// }
 
+    newSearch.append(newRecipe)
 
-
+}
