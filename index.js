@@ -48,10 +48,12 @@ form.addEventListener('submit' , (e) => {
                 recipeImg.src = recipe.recipe.image
                 recipeLink.textContent = `${recipe.recipe.label} Recipe`
                 recipeLink.href = recipe.recipe.url
-
+                const lineBreak = document.createElement('br')
+    
       
 
                 newRecipe.append(recipeName,recipeDes,recipeImg)
+                newRecipe.append(lineBreak)
                 newRecipe.append(recipeLink)
                 newSearch.append(newRecipe)
             })
