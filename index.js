@@ -1,12 +1,19 @@
 // ID selectors 
 const form = document.querySelector('#Recipe-search')
 const newSearch = document.querySelector('#recipe-results')
+const favorite = document.querySelector('#fav-list')
 const navBar = document.querySelector('#recipe-bar')
 const recipeName = document.createElement('h1')
 const newRecipe = document.createElement('div')
 const recipeImg = document.createElement('img')
 const recipeDes = document.createElement('p')
 const recipeLink = document.createElement('a')
+const favButton = document.createElement('button')
+const favoriteRecipe = document.createElement('h1')
+favoriteRecipe.textContent = 'Favorite Recipe List'
+const recipeUl = document.createElement('h4')
+const recipeLi = document.createElement('li')
+const favList = document.createElement('div')
 
 
 
@@ -48,18 +55,46 @@ form.addEventListener('submit' , (e) => {
                 recipeImg.src = recipe.recipe.image
                 recipeLink.textContent = `${recipe.recipe.label} Recipe`
                 recipeLink.href = recipe.recipe.url
-                const lineBreak = document.createElement('br')
-    
-      
+
 
                 newRecipe.append(recipeName,recipeDes,recipeImg)
-                newRecipe.append(lineBreak)
-                newRecipe.append(recipeLink)
+                newRecipe.append(recipeLink, favButton)
                 newSearch.append(newRecipe)
+
+                favButton.addEventListener('click', () => {
+                    console.log('hello')
+                    
+                
+                    recipeUl.textContent = recipe.recipe.label
+                
+                
+                    favoriteRecipe.append(recipeUl)
+                    favList.append(favoriteRecipe)
+                    favorite.append(favList)
+                
+                
             })
         })        
     })
 })
+})
+
+favButton.textContent ='favorite'
+favButton.className = 'fav-button'
+
+// favButton.addEventListener('click', () => {
+//     console.log('hello')
+    
+
+//     recipeLi.textContent = recipe.recipe.label
+
+//     recipeUl.append(recipeLi)
+//     favoriteRecipe.append(recipeUl)
+//     favList.append(favoriteRecipe)
+//     favorite.append(favList)
+
+
+// })
 
 
 // create elements
