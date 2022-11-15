@@ -115,6 +115,8 @@ fetch("http://localhost:3000/favorites")
   .then((data) => renderFavorites(data));
 
 function renderFavorites(favorites) {
+    if(favorites){
+
   favorites.forEach((favorite) => {
     const card = document.createElement("div");
     card.className = "fav-card";
@@ -141,6 +143,7 @@ function renderFavorites(favorites) {
     card.append(favImg);
     favContainer.append(card);
   });
+}
 }
 
 // favButton.addEventListener('click', () => {
