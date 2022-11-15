@@ -63,6 +63,8 @@ form.addEventListener('submit' , (e) => {
 
                 favButton.addEventListener('click', () => {
                     console.log('hello')
+
+
                     
                 
                     recipeUl.textContent = recipe.recipe.label
