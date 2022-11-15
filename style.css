@@ -6,7 +6,7 @@
 body {
     margin: 10 auto;
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 51%, rgba(8,25,132,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 51%, rgba(8,25,132,1) 100%);
     
 }
 
@@ -77,3 +77,44 @@ ul {
 h4{
     font-size: 2rem;
 }
+
+#fav-list{
+    /* align-items: center;
+    display: grid;
+    flex-direction: column;
+     */
+     display: grid;
+     grid-template-columns: repeat(3, 1fr) ;
+     /* gap: 10px; */
+     grid-auto-rows: minmax(100px, auto);
+     
+  }
+
+.fav-card {
+    margin: 0px auto;
+    margin-top: 10%;
+    text-align: center;
+    align-items: center;
+    border: grey solid 1px;
+    padding: 2rem;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: 1rem 8rem; */
+    box-shadow: 20px 15px 6px #6a168b;
+    /* background-color: gray; */
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+    overflow: hidden;
+    border-radius: 1%;
+  
+  }
+
+  .fav-card > img {
+    width: 75%;
+    height: 75%;
+    border: solid;
+  }
+
