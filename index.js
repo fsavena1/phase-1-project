@@ -9,10 +9,6 @@ const recipeDes = document.createElement('p')
 const recipeLink = document.createElement('a')
 
 
-const api_ID = 'dd405108'
-const api_Key ='48fcae0e99aa225862af0bcad8cadbc5'
-const baseUrl= `https://api.edamam.com/search?q=pizza&app_id=${api_ID}&app_key=${api_Key}`
-
 
 // form event listener 
 
@@ -53,6 +49,7 @@ form.addEventListener('submit' , (e) => {
                 recipeLink.textContent = `${recipe.recipe.label} Recipe`
                 recipeLink.href = recipe.recipe.url
 
+      
 
                 newRecipe.append(recipeName,recipeDes,recipeImg)
                 newRecipe.append(recipeLink)
@@ -61,14 +58,6 @@ form.addEventListener('submit' , (e) => {
         })        
     })
 })
-
-// Adding span bar for click event listener
-
-// function recipeSpan(recipe){
-//     let foodSpan = document.createElement('span')
-//     foodSpan.src = recipe.recipe.image
-//     foodBar.append(foodSpan)
-// }
 
 
 // create elements
@@ -96,7 +85,5 @@ form.addEventListener('submit' , (e) => {
 //     newRecipe.append(recipeImg)
 //     newRecipe.append(recipeLink)
 
-
-//     newSearch.append(newRecipe)
 
 // }
