@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
-    
-    <title>Recipe Project </title>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-    <h1>Recipe Finder Project </h1>
+    <title>Recipe Project</title>
+  </head>
+
+  <body>
+    <h1>Recipe Finder Project</h1>
     <form id="Recipe-search">
-        <div>
-            <!-- <label for="name"> Name </label> -->
-            <input type="text" id="name" name="name" placeholder="Search Recipe">
-            <input type="submit" value="Search">
-        </div>
+      <div>
+        <!-- <label for="name"> Name </label> -->
+        <input type="text" id="name" name="name" placeholder="Search Recipe" />
+        <input type="submit" value="Search" />
+      </div>
     </form>
     <div id="recipe-bar"></div>
+    <div id="toggle"></div>
     <div>
-      <div id="recipe-results"> </div>
-      <h1>Favorite Recipes</h1>
+      <div id="recipe-results"></div>
+      <div id="toggle-fav"> <h1>Favorite Recipes</h1> </div>
+      <!-- <h1>Favorite Recipes</h1> -->
       <div id="fav-list"></div>
-      
     </div>
-    <script  defer src="index.js"></script>
+    <script defer src="index.js"></script>
     <script defer src="keys.js"></script>
- </body>
+  </body>
 </html>
-
