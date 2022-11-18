@@ -153,7 +153,7 @@ const toggleBtn = document.createElement('button')
 const toggleSelect = document.querySelector('#toggle')
 toggleSelect.append(toggleBtn)
 
-toggleBtn.textContent = 'Hide Favorites'
+toggleBtn.textContent = 'Show/Hide Favorites'
 
 toggleBtn.addEventListener('click', ()=> {
   console.log('Hello')
