@@ -14,7 +14,7 @@ favoriteRecipe.textContent = "Favorite Recipe List";
 const recipeUl = document.createElement("h4");
 const recipeLi = document.createElement("li");
 const favList = document.createElement("div");
-const togglePls = document.querySelector('#toggle-fav')
+const togglePls = document.querySelector('#toggle-this')
 
 // form event listener
 
@@ -153,7 +153,7 @@ const toggleBtn = document.createElement('button')
 const toggleSelect = document.querySelector('#toggle')
 toggleSelect.append(toggleBtn)
 
-toggleBtn.textContent = 'Hide Favotites'
+toggleBtn.textContent = 'Hide Favorites'
 
 toggleBtn.addEventListener('click', ()=> {
   console.log('Hello')

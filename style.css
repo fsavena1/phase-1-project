@@ -2,6 +2,11 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.title{
+    font-size: 5rem;
+    margin-bottom: -1rem;
+}
+
 
 body {
     margin: 10 auto;
@@ -123,5 +128,6 @@ h4{
     background-repeat: no-repeat;
     border:none;
     cursor: pointer;
+    margin-left: -.75rem ;
   }
 
