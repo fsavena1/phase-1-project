@@ -14,7 +14,7 @@ favoriteRecipe.textContent = "Favorite Recipe List";
 const recipeUl = document.createElement("h4");
 const recipeLi = document.createElement("li");
 const favList = document.createElement("div");
-
+const togglePls = document.querySelector('#toggle-fav')
 
 // form event listener
 
@@ -24,7 +24,9 @@ form.addEventListener("submit", (e) => {
   let formInput = e.target["name"].value;
   // console.log(formInput)
 
-  fetch( `https://api.edamam.com/search?q=${formInput}&app_id=${api_ID}&app_key=${api_Key}`)
+  fetch(
+    `https://api.edamam.com/search?q=${formInput}&app_id=${api_ID}&app_key=${api_Key}`
+  )
     .then((res) => res.json())
     .then((recipes) => {
       while (navBar.firstChild) {
@@ -35,11 +37,11 @@ form.addEventListener("submit", (e) => {
         const newSpan = document.createElement("span");
         const image = document.createElement("img");
         newSpan.className = "span-tile";
-        const testButton = document.createElement('button')
+        const testButton = document.createElement("button");
         // testButton.innerHTML = '🔥'
-        testButton.innerHTML = String.fromCodePoint(0x1F525);
+        testButton.innerHTML = String.fromCodePoint(0x1f525);
 
-        testButton.className = 'test'
+        testButton.className = "test";
 
         // nav.append(testButton)
 
@@ -47,51 +49,49 @@ form.addEventListener("submit", (e) => {
         image.className = "bar-image";
 
         newSpan.append(image);
-        navBar.append(newSpan,testButton);
+        navBar.append(newSpan, testButton);
 
         navBar.className = "recipe-bar";
-        testButton.addEventListener('click', () =>{
-         
+        testButton.addEventListener("click", () => {
+          favoriteRecipe.append(recipeUl);
+          // favList.append(favoriteRecipe)
+          // favorite.append(favList)
 
-            favoriteRecipe.append(recipeUl);
-            // favList.append(favoriteRecipe)
-            // favorite.append(favList)
+          fetch("http://localhost:3000/favorites", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(recipe),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              const card = document.createElement("div");
+              card.className = "fav-card";
+              const p = document.createElement("p");
+              const favImg = document.createElement("img");
 
-            fetch("http://localhost:3000/favorites", {
-              method: "POST",
-              headers: {
-                "Content-type": "application/json",
-              },
-              body: JSON.stringify(recipe),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                const card = document.createElement("div");
-                card.className = "fav-card";
-                const p = document.createElement("p");
-                const favImg = document.createElement("img");
+              p.textContent = data.recipe.label;
+              favImg.src = data.recipe.image;
+              const buttonFav = document.createElement("button");
+              buttonFav.textContent = "X";
 
-                p.textContent = data.recipe.label;
-                favImg.src = data.recipe.image;
-                const buttonFav = document.createElement("button");
-                buttonFav.textContent = "X";
-
-                buttonFav.addEventListener("click", () => {
-                  card.remove();
-                  fetch(`http://localhost:3000/favorites/${data.id}`, {
-                    method: "DELETE",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  });
+              buttonFav.addEventListener("click", () => {
+                card.remove();
+                fetch(`http://localhost:3000/favorites/${data.id}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
                 });
-
-                card.append(p);
-                card.append(buttonFav);
-                card.append(favImg);
-                favContainer.append(card);
               });
-        })
+
+              card.append(p);
+              card.append(buttonFav);
+              card.append(favImg);
+              favContainer.append(card);
+            });
+        });
         newSpan.addEventListener("click", () => {
           // console.log("hello");
           newRecipe.className = "card";
@@ -105,8 +105,6 @@ form.addEventListener("submit", (e) => {
           newRecipe.append(recipeName, recipeDes, recipeImg);
           newRecipe.append(recipeLink);
           newSearch.append(newRecipe);
-
- 
         });
       });
     });
@@ -120,71 +118,52 @@ fetch("http://localhost:3000/favorites")
   .then((data) => renderFavorites(data));
 
 function renderFavorites(favorites) {
-    if(favorites){
+  if (favorites) {
+    favorites.forEach((favorite) => {
+      const card = document.createElement("div");
+      card.className = "fav-card";
+      const p = document.createElement("p");
+      const favImg = document.createElement("img");
+      const buttonFav = document.createElement("button");
+      buttonFav.textContent = "X";
 
-  favorites.forEach((favorite) => {
-    const card = document.createElement("div");
-    card.className = "fav-card";
-    const p = document.createElement("p");
-    const favImg = document.createElement("img");
-    const buttonFav = document.createElement("button");
-    buttonFav.textContent = "X";
-
-    buttonFav.addEventListener("click", () => {
-      card.remove();
-      fetch(`http://localhost:3000/favorites/${favorite.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      buttonFav.addEventListener("click", () => {
+        card.remove();
+        fetch(`http://localhost:3000/favorites/${favorite.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
       });
+
+      p.textContent = favorite.recipe.label;
+      favImg.src = favorite.recipe.image;
+
+      card.append(p);
+      card.append(buttonFav);
+      card.append(favImg);
+      favContainer.append(card);
     });
-
-    p.textContent = favorite.recipe.label;
-    favImg.src = favorite.recipe.image;
-
-    card.append(p);
-    card.append(buttonFav);
-    card.append(favImg);
-    favContainer.append(card);
-  });
-}
+  }
 }
 
-// favButton.addEventListener('click', () => {
-//     console.log('hello')
 
-//     recipeLi.textContent = recipe.recipe.label
+const toggleBtn = document.createElement('button')
+const toggleSelect = document.querySelector('#toggle')
+toggleSelect.append(toggleBtn)
 
-//     recipeUl.append(recipeLi)
-//     favoriteRecipe.append(recipeUl)
-//     favList.append(favoriteRecipe)
-//     favorite.append(favList)
+toggleBtn.textContent = 'Hide Favotites'
 
-// })
+toggleBtn.addEventListener('click', ()=> {
+  console.log('Hello')
+  togglePls.toggleAttribute('hidden')
+})
 
-// create elements
 
-// function createRecipe(recipe) {
 
-//     const newRecipe = document.createElement('div')
-//     newRecipe.className = "card"
 
-//     const recipeName = document.createElement('h1')
-//     recipeName.textContent = recipe.recipe.label
 
-//     const recipeDes = document.createElement('p')
-//     recipeDes.textContent = `${recipe.recipe.cuisineType} + ${recipe.recipe.mealType}`
 
-//     const recipeImg = document.createElement('img')
-//     recipeImg.src = recipe.recipe.image
 
-//     const recipeLink = document.createElement('p')
-//     recipeLink.textContent = recipe.recipe.url
 
-//     newRecipe.append(recipeName)
-//     newRecipe.append(recipeDes)
-//     newRecipe.append(recipeImg)
-//     newRecipe.append(recipeLink)
-
-// }
